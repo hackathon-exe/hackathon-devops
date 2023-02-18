@@ -10,24 +10,12 @@ nameOverride: ""
 fullnameOverride: ""
 
 extraEnvs:
-  - name: KEYCLOAK_HOST
-    value: http://auth.mediatation.tokyo
-  - name: KEYCLOAK_REALM_ClIENT
-    value: med-app
-  - name: KEYCLOAK_CLIENT_ID
-    value: med-app
-  - name: KEYCLOAK_CLIENT_SECRECT
-    value: QfSAgO1NhoERCZBENnLoytgy0ea1cbyE
-  - name: KEYCLOAK_ADMIN_ID
-    value: admin
-  - name: KEYCLOAK_ADMIN_PASSWORD
-    value: "@Ditmecuocdoi6969"
-  - name: AWS_ACCESS_KEY_ID
-    value: AKIA23F3G5BOMIX7CCXQ
-  - name: AWS_SECRET_ACCESS_KEY
-    value: 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
-  - name: AWS_REGION
-    value: ap-southeast-1
+  - name: PAYPAL_CLIENT_ID
+    value: public-med-bucket-v1
+  - name: PAYPAL_CLIENT_SECRET
+    value: public-med-bucket-v1
+  - name: PAYPAL_URL
+    value: public-med-bucket-v1
   - name: BUCKET_NAME
     value: public-med-bucket-v1
   - name: DB_USERNAME
@@ -35,17 +23,15 @@ extraEnvs:
   - name: DB_PASSWORD
     value: med123456
   - name: DB_DATABASE
-    value: med-db
+    value: pet-view
   - name: DB_HOST
     value: db-med-dev.c60v4o2muaf0.ap-southeast-1.rds.amazonaws.com
   - name: DB_PORT
     value: "3306"
-  - name: PGADMIN_DEFAULT_EMAIL
-    value: admin@admin.com
-  - name: PGADMIN_DEFAULT_PASSWORD
-    value: admin
-  - name: SERVER_PORT
-    value: "8080"
+  - name: OPENAI_API_KEY
+    value: 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
+  - name: MODEL_ENDPOINT
+    value: https://api.openai.com/v1/engines/davinci-codex/completions
 serviceAccount:
   create: true
   annotations: {}
@@ -59,8 +45,8 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  containerPort: 8080
-  targetPort: 8080
+  containerPort: 8088
+  targetPort: 8088
   port: 80
 ingress:
   enabled: false
