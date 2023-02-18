@@ -1,0 +1,88 @@
+replicaCount: 1
+
+image:
+  repository: public.ecr.aws/s5b2k5y9/med-app
+  pullPolicy: Always
+  tag: banhsbao-2022-12-12T14-51-16-602Z
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+extraEnvs:
+  - name: KEYCLOAK_HOST
+    value: http://auth.mediatation.tokyo
+  - name: KEYCLOAK_REALM_ClIENT
+    value: med-app
+  - name: KEYCLOAK_CLIENT_ID
+    value: med-app
+  - name: KEYCLOAK_CLIENT_SECRECT
+    value: QfSAgO1NhoERCZBENnLoytgy0ea1cbyE
+  - name: KEYCLOAK_ADMIN_ID
+    value: admin
+  - name: KEYCLOAK_ADMIN_PASSWORD
+    value: "@Ditmecuocdoi6969"
+  - name: AWS_ACCESS_KEY_ID
+    value: AKIA23F3G5BOMIX7CCXQ
+  - name: AWS_SECRET_ACCESS_KEY
+    value: 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
+  - name: AWS_REGION
+    value: ap-southeast-1
+  - name: BUCKET_NAME
+    value: public-med-bucket-v1
+  - name: DB_USERNAME
+    value: root
+  - name: DB_PASSWORD
+    value: med123456
+  - name: DB_DATABASE
+    value: med-db
+  - name: DB_HOST
+    value: db-med-dev.c60v4o2muaf0.ap-southeast-1.rds.amazonaws.com
+  - name: DB_PORT
+    value: "3306"
+  - name: PGADMIN_DEFAULT_EMAIL
+    value: admin@admin.com
+  - name: PGADMIN_DEFAULT_PASSWORD
+    value: admin
+  - name: SERVER_PORT
+    value: "8080"
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: LoadBalancer
+  containerPort: 8080
+  targetPort: 8080
+  port: 80
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
